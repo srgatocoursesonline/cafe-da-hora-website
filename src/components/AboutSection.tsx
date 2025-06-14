@@ -31,17 +31,18 @@ function useAnimatedCountUp(to: number, duration = 1200, decimal = false) {
             }
           }
           raf = requestAnimationFrame(step);
-          observer.disconnect();
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
     if (ref.current) {
       observer.observe(ref.current);
     }
 
     return () => {
-      cancelAnimationFrame(raf);
+      if (raf) {
+        cancelAnimationFrame(raf);
+      }
       observer.disconnect();
     };
   }, [to, duration, decimal, hasAnimated]);
@@ -74,19 +75,19 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
           <div className="flex-1 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
             <strong className="text-3xl text-coffee-500 block font-playfair mb-2">
-              +<span ref={anosRef}>0</span>
+              +<span ref={anosRef}>10</span>
             </strong>
             <span className="text-gray-800 font-inter font-semibold">anos de tradição</span>
           </div>
           <div className="flex-1 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             <strong className="text-3xl text-coffee-500 block font-playfair mb-2">
-              +<span ref={cafesRef}>0</span>
+              +<span ref={cafesRef}>50</span>
             </strong>
             <span className="text-gray-800 font-inter font-semibold">cafés e receitas</span>
           </div>
           <div className="flex-1 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
             <strong className="text-3xl text-coffee-500 block font-playfair mb-2">
-              +<span ref={avaliacaoRef}>0</span>
+              +<span ref={avaliacaoRef}>4.5</span>
             </strong>
             <span className="text-gray-800 font-inter font-semibold">de avaliação</span>
           </div>
