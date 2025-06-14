@@ -16,14 +16,12 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center bg-gradient-to-r from-coffee-50 to-coffee-100"
       role="banner"
     >
-      {/* Imagem de Fundo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=1920&h=1080&fit=crop&auto=format&q=80')`
-        }}
-        aria-hidden="true"
-      />
+      {/* Ícone animado de café */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-5">
+        <div className="mt-8 mb-3">
+          <AnimatedCoffeeIcon />
+        </div>
+      </div>
 
       {/* Skip Link para Acessibilidade */}
       <a
@@ -34,11 +32,6 @@ const HeroSection = () => {
       </a>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Ícone animado de café */}
-        <div className="flex justify-center mb-4">
-          <AnimatedCoffeeIcon />
-        </div>
-
         <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl xl:text-hero font-bold text-coffee-500 mb-6 animate-fade-slide-in">
           O melhor café que você poderia tomar
         </h1>

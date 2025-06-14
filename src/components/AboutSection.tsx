@@ -1,34 +1,35 @@
 
 import React, { useRef, useEffect } from 'react';
 
-// Hook para animar contagem crescente
+// Hook para contagem animada
 function useCountUp(to: number, duration = 1200, decimal = false) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     let start = 0;
-    let startTime: number | null = null;
     let raf: number;
-    const dec = decimal ? 10 : 1;
-    const step = (timestamp: number) => {
+    let startTime: number | null = null;
+    const dec = decimal ? 1 : 0;
+
+    const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      let current = decimal
-        ? (progress * (to * 10)) / 10
+      const current = decimal
+        ? (progress * to)
         : Math.floor(progress * to);
       if (ref.current) {
-        ref.current.innerText = decimal ? current.toFixed(1) : current.toString();
+        ref.current.innerText = decimal ? current.toFixed(1) : `${current}`;
       }
       if (progress < 1) {
-        raf = requestAnimationFrame(step);
+        raf = requestAnimationFrame(animate);
       } else if (ref.current) {
-        ref.current.innerText = to.toString();
+        ref.current.innerText = decimal ? to.toFixed(1) : `${to}`;
       }
     };
-    raf = requestAnimationFrame(step);
+    raf = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line
   }, [to, duration, decimal]);
+
   return ref;
 }
 

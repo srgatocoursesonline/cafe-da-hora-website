@@ -1,128 +1,96 @@
+import React, { useState, useEffect } from 'react';
+import { ShoppingCart } from "lucide-react";
 
-import { ShoppingCart } from 'lucide-react';
+const productsData = [
+  {
+    id: 1,
+    name: 'Café Expresso Tradicional',
+    description: 'Um clássico irresistível, perfeito para começar o dia com energia.',
+    price: 5.50,
+    image: 'https://source.unsplash.com/400x300/?coffee,espresso&sig=1',
+  },
+  {
+    id: 2,
+    name: 'Cappuccino Cremoso',
+    description: 'A combinação ideal de café, leite e um toque de cacau.',
+    price: 8.00,
+    image: 'https://source.unsplash.com/400x300/?coffee,cappuccino&sig=2',
+  },
+  {
+    id: 3,
+    name: 'Latte Avelã',
+    description: 'Uma bebida sofisticada com avelã e aveludado creme de leite.',
+    price: 9.50,
+    image: 'https://source.unsplash.com/400x300/?coffee,latte&sig=3',
+  },
+  {
+    id: 4,
+    name: 'Mocha Chocolate',
+    description: 'Para os amantes de chocolate, um café intenso e delicioso.',
+    price: 10.00,
+    image: 'https://source.unsplash.com/400x300/?coffee,mocha&sig=4',
+  },
+  {
+    id: 5,
+    name: 'Café Gelado Tropical',
+    description: 'Refrescante e exótico, perfeito para os dias mais quentes.',
+    price: 7.00,
+    image: 'https://source.unsplash.com/400x300/?coffee,iced&sig=5',
+  },
+  {
+    id: 6,
+    name: 'Macchiato Caramelo',
+    description: 'Camadas de sabor em um café elegante e equilibrado.',
+    price: 8.50,
+    image: 'https://source.unsplash.com/400x300/?coffee,macchiato&sig=6',
+  },
+];
 
 const ProductsSection = () => {
-  const products = [
-    {
-      id: 1,
-      name: 'Café Especial da Casa',
-      description: 'Blend exclusivo com notas de chocolate e caramelo, perfeito para começar o dia.',
-      price: 'R$ 8,50',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&auto=format&q=80',
-      category: 'Cafés'
-    },
-    {
-      id: 2,
-      name: 'Cappuccino Artesanal',
-      description: 'Espresso encorpado com leite cremoso e espuma aveludada, finalizado com arte latte.',
-      price: 'R$ 7,00',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&auto=format&q=80',
-      category: 'Bebidas'
-    },
-    {
-      id: 3,
-      name: 'Torta de Café',
-      description: 'Sobremesa tradicional da casa, feita com café especial e cobertura cremosa.',
-      price: 'R$ 12,00',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&auto=format&q=80',
-      category: 'Doces'
-    },
-    {
-      id: 4,
-      name: 'Pão de Açúcar',
-      description: 'Pão artesanal fresquinho, perfeito para acompanhar nossos cafés especiais.',
-      price: 'R$ 5,00',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&auto=format&q=80',
-      category: 'Pães'
-    },
-    {
-      id: 5,
-      name: 'Cold Brew Premium',
-      description: 'Café extraído a frio por 12 horas, resultando em sabor suave e refrescante.',
-      price: 'R$ 9,00',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&auto=format&q=80',
-      category: 'Bebidas'
-    },
-    {
-      id: 6,
-      name: 'Cookies de Café',
-      description: 'Cookies crocantes com pedaços de café e chocolate, ideais para um lanche.',
-      price: 'R$ 4,50',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&auto=format&q=80',
-      category: 'Doces'
-    }
-  ];
+  const [products, setProducts] = useState(productsData);
 
   return (
-    <section id="products" className="py-16 lg:py-24 bg-coffee-50" aria-labelledby="products-title">
+    <section
+      id="products"
+      className="py-16 bg-coffee-50"
+      aria-labelledby="products-title"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-slide-in">
-          <h2
-            id="products-title"
-            className="font-playfair text-3xl lg:text-section-title font-semibold text-coffee-500 mb-6 animate-fade-slide-in"
-          >
-            Nossos Produtos
-          </h2>
-          <p className="font-inter text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed animate-fade-slide-in animation-delay-200">
-            Descubra nossa seleção cuidadosamente preparada de cafés especiais, bebidas artesanais 
-            e deliciosos acompanhamentos, todos feitos com ingredientes de primeira qualidade no Keys Café.
-          </p>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <article
-              key={product.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group animate-fade-slide-in hover:scale-105"
-              style={{ animationDelay: `${index * 120}ms` }}
+        <h2
+          id="products-title"
+          className="font-playfair text-3xl lg:text-section-title font-bold text-coffee-600 mb-10 text-center animate-fade-slide-in"
+        >
+          Produtos
+        </h2>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {/* Exemplo de produto */}
+          {[1, 2, 3].map((id) => (
+            <div
+              key={id}
+              className="transition-all duration-500 bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 group relative"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={`${product.name} - ${product.description}`}
-                  className="w-full h-48 object-cover group-hover:brightness-105 transition-transform duration-500 animate-fade-in"
-                  loading="lazy"
-                  width="400"
-                  height="300"
-                />
-                <div className="absolute top-4 left-4 animate-fade-in">
-                  <span className="bg-coffee-500 text-white px-3 py-1 rounded-full text-sm font-inter font-medium animate-pulse-subtle">
-                    {product.category}
-                  </span>
-                </div>
-              </div>
-
+              <img
+                src={`https://source.unsplash.com/400x300/?coffee,product,beans&sig=${id}`}
+                alt={`Produto ${id}`}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
               <div className="p-6">
-                <h3 className="font-playfair text-xl font-semibold text-gray-900 mb-3 group-hover:text-coffee-500 transition-colors duration-300 animate-fade-slide-in">
-                  {product.name}
-                </h3>
-                <p className="font-inter text-gray-700 mb-4 leading-relaxed group-hover:text-gray-900 transition-colors duration-300 animate-fade-slide-in animation-delay-300">
-                  {product.description}
-                </p>
-
+                <h3 className="font-playfair text-xl text-coffee-700 mb-2">Café Especial {id}</h3>
+                <p className="text-gray-700 mb-4">Blend artesanal selecionado, sabor marcante e aroma envolvente.</p>
                 <div className="flex justify-between items-center">
-                  <span className="font-inter text-2xl font-bold text-coffee-500 animate-price-highlight">
-                    {product.price}
-                  </span>
+                  <span className="text-2xl font-bold text-coffee-500">R$ {20 + id * 3},00</span>
                   <button
-                    className="bg-coffee-500 hover:bg-coffee-600 text-white p-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-coffee-500 focus:ring-offset-2 hover:scale-110 animate-bounce-subtle"
-                    aria-label={`Adicionar ${product.name} ao carrinho`}
+                    className="flex items-center bg-coffee-500 hover:bg-coffee-600 text-white px-3 py-2 rounded-full transition-all duration-300 hover:scale-110 shadow-md outline-none focus:ring-2 focus:ring-coffee-400 focus:ring-offset-2"
+                    aria-label="Adicionar ao carrinho"
                   >
-                    <ShoppingCart className="w-5 h-5" />
+                    <ShoppingCart className="w-5 h-5 mr-1" />
+                    <span className="hidden sm:inline">Adicionar</span>
                   </button>
                 </div>
               </div>
-            </article>
+              <span className="block absolute top-2 right-2 text-xs bg-coffee-100 text-coffee-700 rounded px-2 py-1 group-hover:bg-coffee-200 transition-all">Novidade</span>
+            </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12 animate-fade-slide-in animation-delay-800">
-          <button className="bg-navy-500 hover:bg-navy-600 text-white font-inter font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-navy-500 focus:ring-offset-2 shadow-lg animate-pulse-glow hover:animate-none">
-            Ver Cardápio Completo
-          </button>
         </div>
       </div>
     </section>
