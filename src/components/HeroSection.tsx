@@ -27,8 +27,8 @@ const HeroSection = () => {
       >
         Pular para o conteúdo principal
       </a>
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl xl:text-hero font-bold text-white drop-shadow-lg mb-6 opacity-0 animate-fade-in">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white drop-shadow-lg mb-6 opacity-0 animate-fade-in">
           O melhor café que você poderia tomar
         </h1>
         <p className="font-inter text-lg sm:text-xl lg:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
