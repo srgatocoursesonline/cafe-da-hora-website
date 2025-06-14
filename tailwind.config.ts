@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,12 +26,36 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#8B4513', // marrom
+					foreground: '#FFFFFF'
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: '#1E3A8A', // azul escuro
+					foreground: '#FFFFFF'
+				},
+				coffee: {
+					50: '#FDF7F0',
+					100: '#F7E6D3',
+					200: '#EFCBA7',
+					300: '#E7B07B',
+					400: '#D4915A',
+					500: '#8B4513', // primary brown
+					600: '#7A3A10',
+					700: '#693010',
+					800: '#58260D',
+					900: '#471C0A'
+				},
+				navy: {
+					50: '#EFF6FF',
+					100: '#DBEAFE',
+					200: '#BFDBFE',
+					300: '#93C5FD',
+					400: '#60A5FA',
+					500: '#1E3A8A', // secondary blue
+					600: '#1E40AF',
+					700: '#1D4ED8',
+					800: '#1E3A8A',
+					900: '#1E3A8A'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -63,6 +88,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'inter': ['Inter', 'sans-serif'],
+				'sans': ['Inter', 'sans-serif'],
+				'serif': ['Playfair Display', 'serif']
+			},
+			fontSize: {
+				'base': '16px',
+				'hero': ['3.5rem', { lineHeight: '1.1', fontWeight: '700' }],
+				'section-title': ['2.5rem', { lineHeight: '1.2', fontWeight: '600' }],
+				'card-title': ['1.5rem', { lineHeight: '1.3', fontWeight: '600' }]
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +121,22 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out'
 			}
 		}
 	},
