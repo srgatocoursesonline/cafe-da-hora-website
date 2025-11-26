@@ -27,9 +27,9 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section id="testimonials" className="py-20 bg-white" aria-labelledby="testimonials-title">
+  <section id="testimonials" className="py-20 bg-white dark:bg-coffee-900 transition-colors duration-300" aria-labelledby="testimonials-title">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 id="testimonials-title" className="font-playfair text-3xl lg:text-section-title font-bold text-coffee-600 mb-12 animate-fade-slide-in">
+      <h2 id="testimonials-title" className="font-playfair text-3xl lg:text-section-title font-bold text-coffee-600 dark:text-coffee-300 mb-12 animate-fade-slide-in">
         Depoimentos
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-slide-in">

@@ -51,13 +51,13 @@ const productsData = [
 const ProductsSection = () => (
   <section
     id="products"
-    className="py-16 bg-coffee-50"
+    className="py-16 bg-coffee-50 dark:bg-coffee-900 transition-colors duration-300"
     aria-labelledby="products-title"
   >
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <h2
         id="products-title"
-        className="font-playfair text-3xl lg:text-section-title font-bold text-coffee-600 mb-10 text-center animate-fade-slide-in"
+        className="font-playfair text-3xl lg:text-section-title font-bold text-coffee-600 dark:text-coffee-300 mb-10 text-center animate-fade-slide-in"
       >
         Produtos
       </h2>
@@ -65,7 +65,7 @@ const ProductsSection = () => (
         {productsData.map((prod, idx) => (
           <div
             key={prod.id}
-            className="transition-all duration-500 bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 group relative hover:ring-4 hover:ring-coffee-100 animate-fade-in"
+            className="transition-all duration-500 bg-white dark:bg-coffee-800 rounded-lg shadow-md hover:shadow-2xl hover:scale-105 group relative hover:ring-4 hover:ring-coffee-100 dark:hover:ring-coffee-700 animate-fade-in"
             style={{ animationDelay: `${idx * 100}ms` }}
           >
             <img
@@ -78,8 +78,8 @@ const ProductsSection = () => (
               onError={e => (e.currentTarget.src = 'https://images.unsplash.com/photo-1459257868276-5e65389e2722?auto=format&fit=crop&w=400&q=80')}
             />
             <div className="p-6 flex flex-col gap-2">
-              <h3 className="font-playfair text-xl text-coffee-700 mb-2 animate-fade-slide-in">{prod.name}</h3>
-              <p className="text-gray-700 mb-3 text-base animate-fade-slide-in">{prod.description}</p>
+              <h3 className="font-playfair text-xl text-coffee-700 dark:text-coffee-200 mb-2 animate-fade-slide-in">{prod.name}</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-3 text-base animate-fade-slide-in">{prod.description}</p>
               <div className="flex justify-between items-center mt-auto">
                 <span className="text-xl font-bold text-coffee-500 animate-price-highlight">R$ {prod.price.toFixed(2).replace('.', ',')}</span>
                 <button
